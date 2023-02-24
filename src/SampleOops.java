@@ -3,7 +3,7 @@ import java.util.HashSet;
 //Browser Class
 class Browser {
 	Browser() {
-//		System.out.println("Browser Object Created... ");
+		System.out.println("Browser Object Created... ");
 	}
 
 	public void whoAmI() {
