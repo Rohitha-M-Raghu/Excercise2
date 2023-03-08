@@ -249,19 +249,51 @@ public class SampleOops {
 		System.out.println("---------------");
 		System.out.println("1. Create New Tab");
 		System.out.println("2. Set Browser Permission");
-		System.out.println("3. Get Number of Tabs");
+		System.out.println("3. Reset Browser Permission");
+		System.out.println("4. Get Number of Tabs");
 		System.out.println("Enter your Choice");
 		int choice = scanner.nextInt();
 		switch(choice) {
 			case 1: System.out.println("Enter url: ");
 			        chromeTab.put(scanner.next(), new GoogleChrome());
 			        break;
-			case 2: 
+			case 2: setChromePermission();
 					break;
-			case 3: System.out.println("Number of Chrome Tabs: " + GoogleChrome.getNumberOfChromeTabs());
+			case 3: GoogleChrome.resetPermission();
+					break;
+			case 4: System.out.println("Number of Chrome Tabs: " + GoogleChrome.getNumberOfChromeTabs());
 					break;
 			default:System.out.println("Wrong Input!!!");
 			        
 		}
+	}
+	public static void setChromePermission() {
+		//camera, location, microphone
+		Scanner scanner = new Scanner(System.in);
+		boolean cameraAccess;
+		boolean locationAccess;
+		boolean microphoneAccess;
+		System.out.print("Enter camera permission(y/n): ");
+		if(scanner.next().charAt(0) == 'y') {
+			cameraAccess = true;
+		}
+		else {
+			cameraAccess = false;
+		}
+		System.out.print("Enter location permission(y/n): ");
+		if(scanner.next().charAt(0) == 'y') {
+			locationAccess = true;
+		}
+		else {
+			locationAccess = false;
+		}
+		System.out.print("Enter microphone permission(y/n): ");
+		if(scanner.next().charAt(0) == 'y') {
+			microphoneAccess = true;
+		}
+		else {
+			microphoneAccess = false;
+		}
+		GoogleChrome.setPermission(cameraAccess, locationAccess, microphoneAccess);
 	}
 }
